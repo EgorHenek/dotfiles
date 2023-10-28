@@ -26,13 +26,13 @@ local sources = {
   b.formatting.blackd,
 }
 
-local gotest = require("go.null_ls").gotest()
-local gotest_codeaction = require("go.null_ls").gotest_action()
-local golangci_lint = require("go.null_ls").golangci_lint()
+-- local gotest = require("go.null_ls").gotest()
+-- local gotest_codeaction = require("go.null_ls").gotest_action()
+-- local golangci_lint = require("go.null_ls").golangci_lint()
 
-table.insert(sources, gotest)
-table.insert(sources, golangci_lint)
-table.insert(sources, gotest_codeaction)
+-- table.insert(sources, gotest)
+-- table.insert(sources, golangci_lint)
+-- table.insert(sources, gotest_codeaction)
 
 null_ls.setup {
   debug = true,

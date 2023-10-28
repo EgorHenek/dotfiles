@@ -51,6 +51,58 @@ local plugins = {
   },
 
   {
+    "andythigpen/nvim-coverage",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("coverage").setup {
+        commands = true,
+        highlights = {
+          covered = { fg = "#C3E88D" },
+          uncovered = { fg = "#F07178" },
+        },
+        signs = {
+          covered = { hl = "CoverageCovered", text = "▎" },
+          uncovered = { hl = "CoverageUncovered", text = "▎" },
+        },
+      }
+    end,
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-plenary",
+    },
+    config = function()
+      local neotest_ns = vim.api.nvim_create_namespace "neotest"
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require("neotest").setup {
+        adapters = {
+          require "neotest-go" {
+            experimental = {
+              test_table = true,
+            },
+          },
+          require "neotest-plenary",
+        },
+        output = {
+          enabled = true,
+          open_on_run = true,
+        },
+      }
+    end,
+  },
+  {
     "NvChad/nvterm",
     opts = overrides.nvterm,
   },

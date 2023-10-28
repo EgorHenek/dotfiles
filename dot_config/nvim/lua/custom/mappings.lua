@@ -10,6 +10,41 @@ M.general = {
   },
 }
 
+M.neotest = {
+  n = {
+    ["<leader>tt"] = {
+      function()
+        require("neotest").run.run { extra_args = { "-coverprofile=./coverage.out", "-coverpkg ./..." } }
+      end,
+      "Test current function",
+    },
+    ["<leader>tf"] = {
+      function()
+        require("neotest").run.run(vim.fn.expand "%")
+      end,
+      "Test file",
+    },
+    ["<leader>ts"] = {
+      function()
+        require("neotest").run.run(vim.fn.getcwd())
+      end,
+      "Test suite",
+    },
+    ["<leader>tuo"] = {
+      function()
+        require("neotest").output_panel.toggle()
+      end,
+      "Toggle output",
+    },
+    ["<leader>tus"] = {
+      function()
+        require("neotest").summary.toggle()
+      end,
+      "Toggle summary",
+    },
+  },
+}
+
 M.nvterm = {
   n = {
     ["<leader>lg"] = {
