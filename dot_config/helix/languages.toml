@@ -1,0 +1,18 @@
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff", "pyright"]
+auto-format = true
+roots = ["pyproject.toml"]
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+formatter = { command = "rustfmt" }
+auto-format = true
