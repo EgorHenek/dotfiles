@@ -28,6 +28,9 @@ local sources = {
 	-- yaml
 	b.diagnostics.yamllint,
 	b.formatting.yamlfmt,
+
+	--- rust
+	b.formatting.rustfmt,
 }
 
 -- local gotest = require("go.null_ls").gotest()

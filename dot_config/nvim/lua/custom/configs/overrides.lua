@@ -18,6 +18,7 @@ M.treesitter = {
 		"gomod",
 		"python",
 		"yaml",
+		"rust",
 	},
 	indent = {
 		enable = true,
@@ -59,6 +60,10 @@ M.mason = {
 		"yaml-language-server",
 		"yamllint",
 		"yamlfmt",
+
+		--- rust stuff
+		"rust-analyzer",
+		"rustfmt",
 	},
 }
 
