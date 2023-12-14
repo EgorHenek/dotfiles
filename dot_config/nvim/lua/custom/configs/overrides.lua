@@ -55,6 +55,7 @@ M.mason = {
 		"ruff-lsp",
 		"blackd-client",
 		"pyright",
+		"debugpy",
 
 		-- yaml stuff
 		"yaml-language-server",
@@ -80,6 +81,9 @@ M.nvimtree = {
 				git = true,
 			},
 		},
+	},
+	view = {
+		adaptive_size = true,
 	},
 }
 
