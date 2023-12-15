@@ -53,7 +53,6 @@ M.mason = {
 		-- python stuff
 		"ruff",
 		"ruff-lsp",
-		"blackd-client",
 		"pyright",
 		"debugpy",
 

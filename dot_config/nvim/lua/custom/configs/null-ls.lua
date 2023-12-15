@@ -23,7 +23,7 @@ local sources = {
 
 	-- python
 	b.formatting.ruff,
-	b.formatting.blackd,
+	b.diagnostics.ruff,
 
 	-- yaml
 	b.diagnostics.yamllint,
