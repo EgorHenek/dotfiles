@@ -30,19 +30,10 @@ local plugins = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = overrides.treesitter,
-		-- config = function()
-		--   require("nvim-treesitter.parsers").get_parser_configs().just = {
-		--   install_info = {
-		--     url = "https://github.com/IndianBoy42/tree-sitter-just",
-		--     files = { "src/parser.c", "src/scanner.cc" },
-		--     branch = "main",
-		--   },
-		--   maintainers = { "@IndianBoy42" },
-		-- }
-		--
-		--     require("nvim-treesitter.install").compilers = { "gcc-11" }
-		--   end,
+		config = function()
+			dofile(vim.g.base46_cache .. "syntax")
+			require("custom.configs.tree-sitter")
+		end,
 	},
 
 	{
@@ -75,18 +66,9 @@ local plugins = {
 		dependencies = {
 			"nvim-neotest/neotest-go",
 			"nvim-neotest/neotest-plenary",
+			"nvim-neotest/neotest-python",
 		},
 		config = function()
-			local neotest_ns = vim.api.nvim_create_namespace("neotest")
-			vim.diagnostic.config({
-				virtual_text = {
-					format = function(diagnostic)
-						local message =
-							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-						return message
-					end,
-				},
-			}, neotest_ns)
 			require("neotest").setup({
 				adapters = {
 					require("neotest-go")({
@@ -94,6 +76,7 @@ local plugins = {
 							test_table = true,
 						},
 					}),
+					require("neotest-python"),
 					require("neotest-plenary"),
 				},
 				output = {
