@@ -24,7 +24,6 @@ local sources = {
 	-- python
 	b.formatting.ruff,
 	b.formatting.ruff_format,
-	b.diagnostics.ruff,
 
 	-- yaml
 	b.diagnostics.yamllint,
