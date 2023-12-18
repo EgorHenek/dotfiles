@@ -98,9 +98,15 @@ M.dap = {
 	},
 }
 
-M.nvterm = {
+M.disabled = {
 	n = {
-		["<leader>lg"] = {
+		["<leader>td"] = "",
+	},
+}
+
+M.git = {
+	n = {
+		["<leader>gl"] = {
 			function()
 				local nvterm = require("nvterm.terminal")
 				nvterm.send("lazygit && exit", "float")
@@ -109,6 +115,23 @@ M.nvterm = {
 			end,
 			"Lazygit terminal",
 		},
+		["<leader>gts"] = {
+			function()
+				require("gitsigns").toggle_current_line_blame()
+			end,
+			"Toggle current line blame",
+		},
+		["<leader>gtd"] = {
+			function()
+				require("gitsigns").toggle_deleted()
+			end,
+			"Toggle deleted lines",
+		},
+	},
+}
+
+M.nvterm = {
+	n = {
 		["<A-i>"] = {
 			function()
 				require("nvterm.terminal").toggle("float")

@@ -22,6 +22,29 @@ local plugins = {
 		end, -- Override to setup mason-lspconfig
 	},
 
+	{
+		"folke/which-key.nvim",
+		config = function(_, opts)
+			dofile(vim.g.base46_cache .. "whichkey")
+			require("which-key").setup(opts)
+			local present, wk = pcall(require, "which-key")
+			if not present then
+				return
+			end
+			wk.register({
+				-- add group
+				["<leader>"] = {
+					g = { name = "+git" },
+					gt = { name = "+toggle" },
+					tu = { name = "+ui" },
+				},
+			})
+		end,
+		setup = function()
+			require("core.utils").load_mappings("whichkey")
+		end,
+	},
+
 	-- override plugin configs
 	{
 		"williamboman/mason.nvim",
