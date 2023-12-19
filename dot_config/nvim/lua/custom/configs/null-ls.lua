@@ -20,6 +20,8 @@ local sources = {
 	b.formatting.gofumpt,
 	b.formatting.goimports_reviser,
 	b.formatting.golines,
+	b.code_actions.gomodifytags,
+	b.code_actions.impl,
 
 	-- python
 	b.formatting.ruff,

@@ -21,6 +21,9 @@ M.mason = {
 		-- golang stuff
 		"golangci-lint-langserver",
 		"gopls",
+		"delve",
+		"impl",
+		"gomodifytags",
 
 		-- python stuff
 		"ruff",

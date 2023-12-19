@@ -128,6 +128,7 @@ local plugins = {
 		dependencies = {
 			"mfussenegger/nvim-dap-python",
 			"rcarriga/nvim-dap-ui",
+			"leoluz/nvim-dap-go",
 		},
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
@@ -135,6 +136,7 @@ local plugins = {
 			dapui.setup()
 
 			require("dap-python").setup(vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python")
+			require("dap-go").setup()
 
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
@@ -145,28 +147,6 @@ local plugins = {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close()
 			end
-		end,
-	},
-
-	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("go").setup()
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-	},
-	-- Install a plugin
-	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = function()
-			require("better_escape").setup()
 		end,
 	},
 
