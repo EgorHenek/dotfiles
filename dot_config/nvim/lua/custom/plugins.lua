@@ -90,6 +90,7 @@ local plugins = {
 			"nvim-neotest/neotest-go",
 			"nvim-neotest/neotest-plenary",
 			"nvim-neotest/neotest-python",
+			"rouge8/neotest-rust",
 		},
 		config = function()
 			require("neotest").setup({
@@ -101,6 +102,7 @@ local plugins = {
 					}),
 					require("neotest-python"),
 					require("neotest-plenary"),
+					require("neotest-rust"),
 				},
 				output = {
 					enabled = true,
