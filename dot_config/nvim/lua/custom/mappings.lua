@@ -10,6 +10,17 @@ M.general = {
 	},
 }
 
+M.project = {
+	n = {
+		["<leader>fp"] = {
+			function()
+				require("telescope").extensions.projects.projects()
+			end,
+			"Find project",
+		},
+	},
+}
+
 M.neotest = {
 	n = {
 		["<leader>tt"] = {

@@ -92,24 +92,36 @@ local plugins = {
 			"nvim-neotest/neotest-python",
 			"rouge8/neotest-rust",
 		},
-		config = function()
-			require("neotest").setup({
-				adapters = {
-					require("neotest-go")({
-						experimental = {
-							test_table = true,
-						},
-					}),
-					require("neotest-python"),
-					require("neotest-plenary"),
-					require("neotest-rust"),
-				},
-				output = {
-					enabled = true,
-					open_on_run = true,
-				},
-			})
-		end,
+		config = true,
+		opts = {
+			adapters = {
+				["neotest-go"] = {},
+				["neotest-plenary"] = {},
+				["neotest-python"] = {},
+				["neotest-rust"] = {},
+			},
+		},
+		-- config = function()
+		-- 				require("neotest").setup({
+		-- 		adapters = {
+		-- 			require("neotest-go")({
+		-- 				experimental = {
+		-- 					test_table = true,
+		-- 				},
+		-- 			}),
+		-- 			require("neotest-python"),
+		-- 			require("neotest-plenary"),
+		-- 			require("neotest-rust"),
+		-- 		},
+		-- 		output = {
+		-- 			enabled = true,
+		-- 			open_on_run = true,
+		-- 		},
+		-- 		diagnostic = {
+		-- 			enabled = true,
+		-- 		},
+		-- 	})
+		-- end,
 	},
 	{
 		"NvChad/nvterm",
@@ -153,6 +165,19 @@ local plugins = {
 	},
 
 	{ "akinsho/git-conflict.nvim", version = "v1.2.2", config = true },
+	{
+		"ahmedkhalf/project.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("custom.configs.project")
+			require("telescope").load_extension("projects")
+		end,
+	},
+	{
+		"simrat39/symbols-outline.nvim",
+		event = "VeryLazy",
+		config = true,
+	},
 
 	-- To make a plugin not be loaded
 	-- {
