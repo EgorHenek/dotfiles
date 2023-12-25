@@ -9,12 +9,11 @@ return {
     },
   },
   {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources or {}, {
-        nls.builtins.formatting.goimports_reviser,
-      })
-    end,
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        go = { "goimports-reviser", "gofumpt" },
+      },
+    },
   },
 }
