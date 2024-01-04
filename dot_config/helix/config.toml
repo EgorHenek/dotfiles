@@ -1,4 +1,4 @@
-theme = "github_dark_tritanopia"
+theme = "onedark"
 
 [editor]
 line-number = "relative"
