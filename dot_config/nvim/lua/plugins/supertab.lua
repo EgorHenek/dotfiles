@@ -7,6 +7,9 @@ return {
       opts.completion = {
         completeopt = "noselect",
       }
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<CR>"] = vim.NIL,
+      })
     end,
   },
 }

@@ -16,3 +16,23 @@ name = "rust"
 language-servers = ["rust-analyzer"]
 formatter = { command = "rustfmt" }
 auto-format = true
+
+[language-server.golangci-lint-lsp]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint-lsp.config]
+command = [
+  "golangci-lint",
+  "run",
+  "--out-format",
+  "json",
+  "--issues-exit-code=1",
+]
+
+[[language]]
+name = "go"
+auto-format = true
+# text-width = 100
+# rulers = [100]
+# file-types = ["go"]
+language-servers = ["gopls", "golangci-lint-lsp"]
