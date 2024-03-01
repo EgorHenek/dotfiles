@@ -63,3 +63,11 @@ esc = ['reload-config', 'mode main']
 main = 'main'
 secondary = 'secondary'
 programming = 'main'
+
+[[on-window-detected]]
+if.app-id = 'com.liguangming.Shadowrocket'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = ['layout floating']
