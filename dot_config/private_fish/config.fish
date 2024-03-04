@@ -12,6 +12,4 @@ end
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/henek/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+zoxide init fish | source
