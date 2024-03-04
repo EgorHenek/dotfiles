@@ -40,7 +40,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
-        'debugpy',
+        'python',
       },
     }
 
@@ -85,7 +85,6 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
-    local path = require('mason-registry').get_package('debugpy'):get_install_path()
-    require('dap-python').setup(path .. '/venv/bin/python')
+    require('dap-python').setup()
   end,
 }
