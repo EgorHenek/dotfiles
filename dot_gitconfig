@@ -1,0 +1,26 @@
+[user]
+	signingkey = A1C2B082
+	email = eagluhih@gmail.com
+	name = Egor Gluhih
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = /Users/henek/.gitignore_global
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+[merge]
+	conflictstyle = diff3
+	tool = nvimdiff
+[diff]
+	colorMoved = default
+	tool = nvimdiff
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[gpg]
+	program = gpg
