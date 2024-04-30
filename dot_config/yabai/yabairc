@@ -5,8 +5,6 @@ yabai -m config layout bsp
 
 yabai -m config window_placement second_child
 
-yabai -m config external_bar main:40:0
-
 yabai -m config auto_balance on
 
 # padding
