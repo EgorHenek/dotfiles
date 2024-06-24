@@ -10,3 +10,4 @@ oh-my-posh init fish --config ~/.config/omp/atomic.json | source
 
 fish_add_path -a /Users/henek/.config/.foundry/bin
 source ~/.config/fish/functions/yazi.fish
+source ~/.config/fish/functions/zellij.fish
