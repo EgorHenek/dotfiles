@@ -1,8 +1,8 @@
 theme = "kanagawa"
 
 [editor]
-line-number = "relative"
 mouse = false
+auto-format = true
 shell = ["sh", "-c"]
 bufferline = "multiple"
 color-modes = true
@@ -11,6 +11,9 @@ color-modes = true
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.lsp]
+display-inlay-hints = true
 
 [editor.statusline]
 left = ["mode", "spacer", "version-control", "diagnostics", "spinner"]

@@ -5,9 +5,76 @@ command = "ruff-lsp"
 command = "pyright-langserver"
 args = ["--stdio"]
 
+[language-server.lsp-ai]
+command = "lsp-ai"
+
+[language-server.lsp-ai.config.memory]
+file_store = {}
+
+[language-server.lsp-ai.config.models.model1]
+type = "open_ai"
+chat_endpoint = "https://openrouter.ai/api/v1/chat/completions"
+model = "anthropic/claude-3-haiku"
+auth_token_env_var_name = "OPENAI_API_KEY"
+
+[language-server.lsp-ai.config.completion]
+model = "model1"
+
+[language-server.lsp-ai.config.completion.parameters]
+max_tokens = 64
+max_context = 1024
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "system"
+content = "Instructions:\n- You are an AI programming assistant.\n- Given a piece of code with the cursor location marked by \"<CURSOR>\", replace \"<CURSOR>\" with the correct code or comment.\n- First, think step-by-step.\n- Describe your plan for what to build in pseudocode, written out in great detail.\n- Then output the code replacing the \"<CURSOR>\"\n- Ensure that your completion fits within the language context of the provided code snippet (e.g., Python, JavaScript, Rust).\n\nRules:\n- Only respond with code or comments.\n- Only replace \"<CURSOR>\"; do not include any previously written code.\n- Never include \"<CURSOR>\" in your response\n- If the cursor is within a comment, complete the comment meaningfully.\n- Handle ambiguous cases by providing the most contextually appropriate completion.\n- Be consistent with your responses."
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "user"
+content = "def greet(name):\n    print(f\"Hello, {<CURSOR>}\")"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "assistant"
+content = "name"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "user"
+content = "function sum(a, b) {\n    return a + <CURSOR>;\n}"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "assistant"
+content = "b"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "user"
+content = "fn multiply(a: i32, b: i32) -> i32 {\n    a * <CURSOR>\n}"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "assistant"
+content = "b"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "user"
+content = "# <CURSOR>\ndef add(a, b):\n    return a + b"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "assistant"
+content = "Adds two numbers"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "user"
+content = "# This function checks if a number is even\n<CURSOR>"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "assistant"
+content = "def is_even(n):\n    return n % 2 == 0"
+
+[[language-server.lsp-ai.config.completion.parameters.messages]]
+role = "user"
+content = "{CODE}"
+
 [[language]]
 name = "python"
-language-servers = ["pyright", "ruff"]
+language-servers = ["pyright", "ruff", "lsp-ai"]
 auto-format = true
 roots = ["pyproject.toml"]
 
@@ -29,7 +96,60 @@ auto-format = true
 # text-width = 100
 # rulers = [100]
 # file-types = ["go"]
-language-servers = ["gopls", "golangci-lint-lsp"]
+language-servers = ["gopls", "golangci-lint-lsp", "lsp-ai"]
+
+[[language]]
+name = "rust"
+auto-format = true
+language-servers = ["rust-analyzer", "lsp-ai"]
+
+[language-server.emmet-ls]
+command = "emmet-ls"
+args = ["--stdio"]
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+format = { enable = true }
+nodePath = ""
+quiet = false
+rulesCustomizations = []
+run = "onType"
+validate = "on"
+experimental = {}
+problems = { shortenToSingleLine = false }
+
+[language-server.eslint.config.codeAction]
+disableRuleComment = { enable = true, location = "separateLine" }
+showDocumentation = { enable = false }
+
+[language-server.vscode-json-language-server.config]
+json = { validate = { enable = true }, format = { enable = true } }
+provideFormatter = true
+
+[[language]]
+name = "typescript"
+# language-servers = ["typescript-language-server", "eslint", "emmet-ls"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "ts"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+# language-servers = ["typescript-language-server", "eslint", "emmet-ls"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "js"] }
+auto-format = true
+
+[[language]]
+name = "svelte"
+auto-format = true
+
+[[language]]
+name = "json"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "json"] }
+auto-format = true
 
 [[language]]
 name = "toml"
@@ -45,3 +165,26 @@ formatter = { command = "yamlfmt", args = ["-"] }
 name = "lua"
 auto-format = true
 formatter = { command = "stylua", args = ["-"] }
+
+[language-server.pest-language-server]
+command = "pest-language-server"
+
+[[language]]
+name = "pest"
+scope = "source.pest"
+injection-regex = "pest"
+file-types = ["pest"]
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { tab-width = 4, unit = "    " }
+language-servers = ["pest-language-server"]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+
+[[grammar]]
+name = "pest"
+source = { git = "https://github.com/pest-parser/tree-sitter-pest", rev = "a8a98a824452b1ec4da7f508386a187a2f234b85" }
