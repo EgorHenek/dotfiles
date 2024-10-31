@@ -57,22 +57,22 @@ config.keys = {
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
 	{
-		key = "H",
+		key = "V",
 		mods = "CMD",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "V",
+		key = "H",
 		mods = "CMD",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "w",
+		key = "W",
 		mods = "CMD",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
 	{
-		key = "W",
+		key = "w",
 		mods = "CMD",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
