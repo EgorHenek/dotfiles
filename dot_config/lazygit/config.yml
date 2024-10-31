@@ -3,4 +3,9 @@
 git:
   paging:
     colorArg: always
-    pager: delta --dark --paging=never
+    pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+customCommands:
+  - key: 'F'
+    command: 'git fetch --prune'
+    context: 'localBranches'
+    stream: true
