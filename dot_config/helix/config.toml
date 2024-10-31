@@ -1,7 +1,7 @@
 theme = "kanagawa"
 
 [editor]
-mouse = false
+mouse = true
 auto-format = true
 shell = ["sh", "-c"]
 bufferline = "multiple"
