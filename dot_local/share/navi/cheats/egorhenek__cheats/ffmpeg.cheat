@@ -1,0 +1,14 @@
+% ffmpeg, convert
+
+# Convert mp4 video to gif
+ffmpeg -i <name_mp4>.mp4 -vf "fps=<fps>,scale=<width>:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" <name_mp4>.gif
+
+$ name_mp4: fd -e mp4 --format "{.}"
+$ fps: echo '15 30 50 60' |  tr ' ' '\n'
+$ width: echo '320 480 640 800 960' |  tr ' ' '\n'
+
+# Cut part of youtube video and transcode for social networks
+
+ffmpeg -i <name_webm>.webm -ss <start> -t <seconds> -c:v libx264 -c:a aac <name_webm>.mp4
+
+$ name_webm: fd -e webm --format "{.}"
