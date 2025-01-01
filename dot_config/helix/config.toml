@@ -40,7 +40,6 @@ C-k = [
   "move_line_up",
   "paste_before",
 ]
-A-s = [":w"]
 C-h = "jump_view_left"
 C-l = "jump_view_right"
 
