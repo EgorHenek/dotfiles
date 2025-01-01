@@ -7,6 +7,9 @@ $ name_mp4: fd -e mp4 --format "{.}"
 $ fps: echo '15 30 50 60' |  tr ' ' '\n'
 $ width: echo '320 480 640 800 960' |  tr ' ' '\n'
 
+# Convert youtube video to mp4
+ffmpeg -i <name_webm>.webm -c:v libx264 -crf 23 <name_webm>.mp4
+
 # Cut part of youtube video and transcode for social networks
 
 ffmpeg -i <name_webm>.webm -ss <start> -t <seconds> -c:v libx264 -c:a aac <name_webm>.mp4
